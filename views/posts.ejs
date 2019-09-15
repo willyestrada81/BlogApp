@@ -1,0 +1,40 @@
+<%- include("partials/header") -%>
+
+<div class="top-element">
+        <% posts.forEach((post) => { %>
+            <div class="ui container post-title">
+                <div class="ui items">
+                    <div class="item">
+                        <div class="image">
+                            <img src="<%= post.image %>">
+                        </div>
+                        <div class="content">
+                            <a class="header" href="/blogs/<%= post._id %>">
+                                <%= post.title %>
+                            </a>
+                            <div class="description">
+                                <p>
+                                    <%= post.body.substring(0, 150) + '...' %>
+                                </p>
+                            </div>
+                            <div class="extra">
+                                By
+                                <%= post.author%>
+                            </div>
+                            <div class="extra">
+                                <em>
+                                    <%= post.date.toDateString()%>
+                                </em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+            </div>
+
+        <% }) %>
+</div>
+
+
+
+<%- include('partials/footer') %>

@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') -%>
+
+<div class="ui container top-element register-form">
+    <div class="ui equal width padded grid stackable">
+        <div class="row">
+            <div class="column">
+                <div class="margin-top huge header">
+                    <h1 class="ui center aligned header">Sign Up</h1>
+                </div>
+                <form class="ui form margin-top-form">
+                    <div class="required field">
+                        <label>First Name</label>
+                        <input type="text" name="first-name" placeholder="First Name">
+                    </div>
+                    <div class="required field">
+                        <label>Last Name</label>
+                        <input type="text" name="last-name" placeholder="Last Name">
+                    </div>
+                    <div class="required field">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="required field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="required field">
+                        <label>Re-Enter Password</label>
+                        <input type="password" name="passwordMatch" placeholder="Re-Enter Password">
+                    </div>
+                    
+                    <button class="ui button fluid register-btn" type="submit">Submit</button>
+                </form>
+                <div class="ui bottom center-aligned">
+                    <strong>Already signed up?</strong> 
+                    <a href="#"><strong>Login here</strong></a> <strong>instead.</strong> 
+                </div>
+            </div>
+            <div class="column loginForm">
+            </div>
+        </div>
+    </div>
+    </div>
+    

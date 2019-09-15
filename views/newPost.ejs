@@ -1,0 +1,29 @@
+<%- include("partials/header") -%>
+    <div class="ui container center-form top-element">
+         <div class="ui basic segment" style="padding-left: 0px;">
+        <div class="ui buttons">
+            <a href="/" class="ui labeled icon button fixed">
+                <i class="left chevron icon"></i>
+                Back
+            </a>
+        </div>
+        </div>
+        <form class="ui form" method="Post" action="/blogs">
+            <div class="required field">
+                    <label>Post Title</label>
+                    <input type="text" name="post_title" placeholder="Post Title" required>
+            </div>
+            <div class="field">
+                <label>Post Image</label>
+                <input type="text" name="post_image" placeholder="Image URL">
+            </div>
+            <div class="required field">
+                <label>What's on your mind?</label>
+                <textarea required name="post_body">
+                </textarea>
+            </div>
+            <button class="fluid ui button orange rounded-button" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer') %>

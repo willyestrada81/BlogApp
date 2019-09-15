@@ -1,0 +1,123 @@
+<%- include('partials/header.ejs') -%>
+
+
+    <div class="top-element">
+        <div class="ui container">
+            <div class="ui internally celled grid">
+                <div class="row">
+                    <div class="three wide column">
+                        <img class="ui medium rounded image" src="<%= post.image %>">
+                    </div>
+                    <div class="ten wide column">
+
+                        <h1 class="ui center aligned header">
+                            <%=post.title %>
+                        </h1>
+                        <div class="ui horizontal list">
+                            <div class="item">
+                                <img class="ui mini circular image" src="/img/avatar1.png">
+
+                                <div class="content">
+                                    <div class="ui sub header">
+                                        <%= post.author %>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <em>
+                                                <%= post.date.toDateString() %>
+                                            </em>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <div class="edit-btn">
+                            <a href="/blogs/<%= post._id %>/edit" class="positive fluid basic ui button">
+                                <i class="icon edit outline"></i>
+                                Edit Post
+                            </a>
+                        </div>
+                        <form method="POST" action="/blogs/<%=post._id %>?_method=DELETE">
+                            <button type="Submit" id="mysubmit" class="negative ui basic fluid button">
+                                <i class="icon trash"></i>
+                                Delete Post
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="three wide column">
+                        <div class="ui buttons">
+                            <a href="/blogs" class="ui labeled icon button fixed">
+                                <i class="left chevron icon"></i>
+                                Back
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ten wide column">
+                        <p>
+                            <%=post.body %>
+                        </p>
+                        <!-- Comments -->
+                        <!-- <div class="ui form">
+                        <div class="fields">
+                            <form class="twelve wide field comment-form-btn" method="POST" action="/blogs/<%= post._id %>" autocomplete="off">
+                                <input class="comment-form" type="text" placeholder="Write a comment" name="postComment">
+                                <div class="two wide field">
+                                    <button type="submit" href="/blogs/<%= post._id %>/comments/new" class="circular ui icon basic button comment-form-btn">
+                                        <i class="chevron circle right icon"></i>
+                                    </button>
+                                </div>
+                            </form> 
+                        </div>
+                    </div> -->
+                        <!-- comments -->
+                        <div class="ui comments">
+                            <h3 class="ui dividing header">Comments</h3>
+                            <%  post.comments.forEach((comment) => { %>
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="/img/profile-avatar.png">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">
+                                            <%= comment.author %>
+                                        </a>
+                                        <div class="metadata">
+                                            <span class="date">
+                                                <%= comment.dateCreated.toDateString() %>
+                                            </span>
+                                        </div>
+                                        <div class="text">
+                                            <p>
+                                                <%= comment.postComment %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%  }) %>
+
+                                    <form class="ui reply form" method="POST" action="/blogs/<%=post._id%>" autocomplete="off">
+                                        <div class="field">
+                                            <input class="comment-form" type="text" placeholder="Write a comment" name="postComment">
+                                        </div>
+                                        <button type="submit" href="/blogs/<%= post._id %>/comments/new" class="ui right labeled icon button comment-form-btn">Add Reply
+                                            <i class="chevron circle right icon"></i>
+                                        </button>
+                                    </form>
+                        </div>
+                        <!-- comments -->
+
+                    </div>
+                    <div class="three wide column">
+                        <img>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs') -%>

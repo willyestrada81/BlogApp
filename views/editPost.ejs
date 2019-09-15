@@ -1,0 +1,42 @@
+<%- include("partials/header") -%>
+
+
+    <div class="ui container center-form margin-top">
+        <div class="ui basic segment">
+            <div class="ui buttons">
+                <a href="/blogs/<%= post._id %>" class="ui labeled icon button fixed">
+                    <i class="left chevron icon"></i>
+                    Back
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="ui header">
+                <img src="/img/avatar1.png" class="ui circular image edit-form">
+                <div class="edit-form">
+                    <i class="edit icon"></i>
+                    <h2 style="display:-webkit-inline-box"><em><%= post.title %></em></h2>
+                </div>
+                
+            </div>
+
+        </div>
+        <form class="ui form element-space" method="POST" action="/blogs/<%= post._id %>?_method=PUT">
+            <div class="field">
+                <label>Post Title</label>
+                <input value="<%= post.title %>" type="text" name="post_title">
+            </div>
+            <div class="field">
+                <label>Post Image</label>
+                <input type="text" name="post_image" value="<%= post.image %>">
+            </div>
+            <div class="field">
+                <label>What's on your mind?</label>
+                <textarea name="post_body"><%= post.body %>
+                </textarea>
+            </div>
+            <button class="fluid ui button orange rounded-button" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <%- include('partials/footer') %>
