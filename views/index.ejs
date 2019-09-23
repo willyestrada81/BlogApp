@@ -1,78 +1,81 @@
 <div class="banner">
-<div class="top-element">
-    <%- include("partials/header") -%>
-        <div class="ui container">
-            <div class="title">
-                <h1>Hello, Welcome to my world...</h1>
-                <div class="paragraph">
-                    <p>My mission is to help small bussinesses focus on what's most imporant to them, by making their ideas
-                        come a reality.</p>
-                </div>
-                <div class="element-space center-element">
-                    <a href="/blogs" class="ui orange button rounded-button btn">
-                        See all posts
-                    </a>
-                        <div class="social-btn">
-                            <button class="ui circular icon button">
-                                <i class="facebook f icon"></i>
-                            </button>
-                            <button class="ui circular icon button">
-                                <i class="twitter icon"></i>
-                            </button>
-                            <button class="ui circular icon button">
-                                <i class="linkedin icon"></i>
-                            </button>
-                            <button class="ui circular youtube icon button">
-                                <i class="youtube icon"></i>
-                            </button>
-                        </div>
-                    
-                </div>
-            </div>
-        </div>
-</div>
-</div>
-
-        <div class="latest-posts">
+    <div class="top-element">
+        <%- include("partials/header") -%>
             <div class="ui container">
-                <div class="ui sixteen wide column grid center aligned">
-                    <div class="latest-posts-title">
-                        <h3>Latest Posts</h3>
+                <div class="title">
+                    <h1>Hi there!! Welcome to</h1>
+                    <div class="paragraph">
+                        <p>Just another MEDIUM to share your thoughts....</p>
+                    </div>
+                    <div class="element-space center-element">
+                        <a href="/blogs" class="ui orange button rounded-button btn">
+                            See all posts
+                        </a>
+                        <div class="social-btn">
+                            <a href="http://facebook.com">
+                                <button class="ui circular icon button">
+                                    <i class="facebook icon"></i>
+                                </button>
+                            </a>
+                            <a href="http://twitter.com">
+                                <button class="ui circular icon button">
+                                    <i class="twitter icon"></i>
+                                </button>
+                            </a>
+                            <a href="http://linkedin.com">
+                                <button class="ui circular icon button">
+                                    <i class="linkedin icon"></i>
+                                </button>
+                            </a>
+                            <a href="http://youtube.com">
+                                <button class="ui circular youtube icon button">
+                                    <i class="youtube icon"></i>
+                                </button>
+                            </a>
+
+                        </div>
+
                     </div>
                 </div>
-                <div class="ui three column grid stackable">
-                    <% posts.forEach((post) => { %>
-                        <div class="column three-posts animated bounceInRight slow">
-                            <div class="ui card card-shadow">
-                                <div class="image card-image">
-                                    <img src="<%= post.image %>">
-                                </div>
-                                <div class="content post-title">
-                                    <a href="/blogs/<%= post._id %>">
-                                        <%=post.title %>
-                                    </a>
-                                    <div class="meta">
-                                        <span class="date">
-                                            <em>
-                                                <%= post.date.toDateString() %>
-                                            </em>
-                                        </span>
-                                    </div>
-                                    <div class="description">
-                                        <%= post.body.substring(0, 55) + '...' %>
-                                    </div>
-                                </div>
-                                <div class="extra content">
-                                    <a>
-                                        <div class="ui buttons">
-                                            <a href="/blogs/<%= post._id %>" class="mini ui btn button primary rounded-button center attached">Read More
-                                            </a>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <% }) %>
+            </div>
+    </div>
+</div>
+
+<div class="ui container">
+    <div class="latest-posts-title">
+        <h3>Latest Posts</h3>
+    </div>
+<div>
+<div class="card-container">
+
+<% posts.forEach((post) => { %>
+        <div class="ui card card-shadow">
+            <div class="image card-image">
+                <img src="<%= post.image %>">
+            </div>
+            <div class="content post-title">
+                <a href="/blogs/<%= post._id %>">
+                    <h3><%=post.title %></h3>
+                </a>
+                <div class="meta">
+                    <span class="date">
+                        <em>
+                            <%= post.date.toDateString() %>
+                        </em>
+                    </span>
+                </div>
+                <div class="extra content">
+                    <div class="ui buttons">
+                        <a href="/blogs/<%= post._id %>" class="mini ui btn button primary rounded-button center attached">Read More
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+    <% }) %>
+</div>
+    
+</div>
+
+
+<%- include('partials/footer.ejs') -%>

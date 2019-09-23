@@ -12,14 +12,19 @@
             <div class="required field">
                     <label>Post Title</label>
                     <input type="text" name="post_title" placeholder="Post Title" required>
-            </div>
-            <div class="field">
-                <label>Post Image</label>
-                <input type="text" name="post_image" placeholder="Image URL">
+                    <label>Author</label>
+                    <input type="text" name="post_author" placeholder="Author" required>
             </div>
             <div class="required field">
+                <label>Post Image URL</label>
+                <input type="text" name="post_image" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions."
+                placeholder="https://images.unsplash.com/..." required>
+                <small>Only from Unsplash.com. Click
+                    <a href="https://youtu.be/Bn3weNRQRDE" target="_blank">here</a> for tutorial on how to copy unsplash urls.</small>
+            </div>
+            <div class="required field textarea-input">
                 <label>What's on your mind?</label>
-                <textarea required name="post_body">
+                <textarea rows="12" cols="133" required name="post_body" id="editor" placeholder="Please, remember to credir the originla author and include a link to the original post at the bottom.">
                 </textarea>
             </div>
             <button class="fluid ui button orange rounded-button" type="submit">Submit</button>

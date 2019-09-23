@@ -4,7 +4,7 @@ const comment = require('./comments')
 
 const blogSchema = new mongoose.Schema({
   title: String,
-  author: { type: String, default: "William" },
+  author: { type: String, default: "Author" },
   body: String,
   image: {
     type: String,

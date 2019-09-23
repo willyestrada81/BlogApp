@@ -58,21 +58,9 @@
                     </div>
                     <div class="ten wide column">
                         <p>
-                            <%=post.body %>
+                            <%-post.body %>
                         </p>
-                        <!-- Comments -->
-                        <!-- <div class="ui form">
-                        <div class="fields">
-                            <form class="twelve wide field comment-form-btn" method="POST" action="/blogs/<%= post._id %>" autocomplete="off">
-                                <input class="comment-form" type="text" placeholder="Write a comment" name="postComment">
-                                <div class="two wide field">
-                                    <button type="submit" href="/blogs/<%= post._id %>/comments/new" class="circular ui icon basic button comment-form-btn">
-                                        <i class="chevron circle right icon"></i>
-                                    </button>
-                                </div>
-                            </form> 
-                        </div>
-                    </div> -->
+                            
                         <!-- comments -->
                         <div class="ui comments">
                             <h3 class="ui dividing header">Comments</h3>

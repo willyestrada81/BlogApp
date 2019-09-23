@@ -21,3 +21,7 @@ window.onload = function() {
     }
   }
 };
+
+// NEW POST FORM 
+var contents = document.getElementById("editablePost").innerHTML;
+document.getElementById("editablePost").innerHTML = contents;

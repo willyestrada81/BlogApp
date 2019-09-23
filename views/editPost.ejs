@@ -27,12 +27,19 @@
                 <input value="<%= post.title %>" type="text" name="post_title">
             </div>
             <div class="field">
-                <label>Post Image</label>
-                <input type="text" name="post_image" value="<%= post.image %>">
+                <label>Author</label>
+                <input value="<%= post.author %>" type="text" name="post_author">
+            </div>
+            <div class="required field">
+                <label>Post Image URL</label>
+                <input type="text" name="post_image" value="<%= post.image %>" pattern="^https:\/\/images\.unsplash\.com\/.*" title="Only images from images.unsplash.com allowed. See link below for instructions."
+                    placeholder="https://images.unsplash.com/..." required>
+                <small>Only from Unsplash.com. Click
+                    <a href="https://youtu.be/Bn3weNRQRDE" target="_blank">here</a> for tutorial on how to copy unsplash urls.</small>
             </div>
             <div class="field">
                 <label>What's on your mind?</label>
-                <textarea name="post_body"><%= post.body %>
+                <textarea id="editor" name="post_body"><%= post.body %>
                 </textarea>
             </div>
             <button class="fluid ui button orange rounded-button" type="submit">Submit</button>

@@ -9,13 +9,13 @@
                             <img src="<%= post.image %>">
                         </div>
                         <div class="content">
-                            <a class="header" href="/blogs/<%= post._id %>">
+                            <a class="header link" href="/blogs/<%= post._id %>">
                                 <%= post.title %>
                             </a>
                             <div class="description">
-                                <p>
-                                    <%= post.body.substring(0, 150) + '...' %>
-                                </p>
+                                <a href="/blogs/<%= post._id %>">
+                                    <%- post.body.substring(0, 150) + '...' %>
+                                </a>
                             </div>
                             <div class="extra">
                                 By

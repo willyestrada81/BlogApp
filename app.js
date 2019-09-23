@@ -1,4 +1,5 @@
 //REQUIRE DEPENDENCIES PAQUEGES
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -8,6 +9,14 @@ const moment = require("moment");
 const methodOverride = require("method-override"); // This is required to make put requests to the DB
 
 // REQUIRE THE DATA MODULES
+
+//MONGO DB CONFIG
+const mongoDB = process.env.MongoURI;
+
+//CONNECT TO MONGODB USING MONGOOSE
+mongoose.connect(mongoDB, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err)); 
 
 const User = require("./models/users");
 const Comments = require("./models/comments");
@@ -28,14 +37,9 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-//Set up mongoose connection
-mongoose.connect("mongodb://localhost:27017/blog_app", {
-  useNewUrlParser: true
-});
+
 mongoose.set("useFindAndModify", false);
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Mongoose Schema Config setup in the models directory
 
@@ -50,7 +54,7 @@ app.get("/", (req, res) => {
     }
   })
     .sort({ _id: -1 })
-    .limit(3);
+    .limit(6);
 });
 app.get("/blogs", (req, res) => {
   Blog.find({}, (err, posts) => {
@@ -68,12 +72,14 @@ app.get("/blogs/new", (req, res) => {
 
 app.post("/blogs", (req, res) => {
   const post_title = req.body.post_title;
+  const post_author = req.body.post_author;
   const post_image = req.body.post_image;
   const post_body = req.body.post_body;
 
   Blog.create(
     {
       title: post_title,
+      author: post_author,
       body: post_body,
       image: post_image
     },
@@ -129,13 +135,14 @@ app.get("/blogs/:id/edit", (req, res) => {
 app.put("/blogs/:id", (req, res) => {
   let post_id = req.params.id;
   const post_title = req.body.post_title;
+  const post_author = req.body.post_author;
   const post_image = req.body.post_image;
   const post_body = req.body.post_body;
 
   //Find first the existing object in DB with the _id , then redirect
   Blog.findByIdAndUpdate(
     post_id,
-    { title: post_title, body: post_body, image: post_image },
+    { title: post_title, author: post_author, body: post_body, image: post_image },
     (err, updatedPost) => {
       if (err) {
         console.log(err);

@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   profileImage: {
     type: String,
-    default: "/public/img/profile-avatar.png"
+    default: "/public/img/avatar1.png"
   },
   signupDate: { type: Date, default: Date.now }
 });
