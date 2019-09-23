@@ -8,6 +8,7 @@ const path = require("path");
 const moment = require("moment");
 const methodOverride = require("method-override"); // This is required to make put requests to the DB
 
+const PORT = process.env.PORT || 3000;
 // REQUIRE THE DATA MODULES
 
 //MONGO DB CONFIG
@@ -25,7 +26,7 @@ const Blog = require("./models/posts");
 //CREATE EXPRESS APP
 const app = express();
 
-const PORT = process.env.port || 3000;
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -56,6 +57,7 @@ app.get("/", (req, res) => {
     .sort({ _id: -1 })
     .limit(6);
 });
+
 app.get("/blogs", (req, res) => {
   Blog.find({}, (err, posts) => {
     if (err) {
